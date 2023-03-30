@@ -17,8 +17,12 @@ public class CityService {
 
   @Autowired
   CityRepository cityRepository;
+  @Autowired 
+  StateService stateService;
 
   public City save(City city) {
+    var state = stateService.searchOrFail(city.getState().getId());
+    city.setState(state);
     return cityRepository.save(city);
   }
 

@@ -55,7 +55,7 @@ public class RestaurantRepositoryImpl implements RestaurantRepositoryQueries {
       jpql.append("and taxaFrete <= :taxaFinal ");
       parametros.put("taxaFinal", taxaFinal);
     }
-
+    
     var query = manager.createQuery(jpql.toString(), Restaurant.class);
 
     parametros.forEach((key, value) -> query.setParameter(key, value));
